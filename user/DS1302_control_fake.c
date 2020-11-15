@@ -75,7 +75,7 @@ void Datapros()//时钟数据处理函数
 	Display[3] = smgduan[TIM[1]>>4];//分
 	Display[4] = smgduan[TIM[1]&0x0f];
 	Display[5] = 0x40;
-	Display[6] = smgduan[(TIM[0]&0x70)>>4];//秒（屏蔽时钟启动位
+	Display[6] = smgduan[TIM[0]>>4];//秒
 	Display[7] = smgduan[TIM[0]&0x0f];
 }
 
