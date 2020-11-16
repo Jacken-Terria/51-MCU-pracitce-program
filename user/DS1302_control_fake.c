@@ -51,7 +51,7 @@ void Timer0Init()//定时器中断0使能函数
 	TR0 = 1;
 }
 
-/*void UsartInit()
+void UsartInit()
 {
 	TMOD = 0x20;
 	//设置波特率4800
@@ -64,7 +64,7 @@ void Timer0Init()//定时器中断0使能函数
 	EA = 1;
 	//开启中断
 	TR1 = 1;
-}*/
+}
 
 void Datapros()//时钟数据处理函数
 {
@@ -122,7 +122,7 @@ void main()
 	Timer0Init();
 	EXIT0Init();
 	Ds1302Init();
-	//UsartInit();
+	UsartInit();
 	while(1)
 	{
 		Datapros();
@@ -187,7 +187,7 @@ void Time0() interrupt 1
 	}
 }
 
-/*处于BUG状态中
+处于BUG状态中
 void Usart() interrupt 4
 {
 	u8 receiveData;
@@ -198,4 +198,4 @@ void Usart() interrupt 4
 	while(!TI);
 	//等待下一次发送中断
 	TI = 0;
-} */
+} 
