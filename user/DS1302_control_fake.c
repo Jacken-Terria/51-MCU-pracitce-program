@@ -1,6 +1,6 @@
 //通过按键控制DS1302时钟的开关(伪)+定时器控制延时+蜂鸣器(受按键控制)
-#include "reg52.h"
-#include "ds1302.h"
+#include "reg52.h"//一些特殊寄存器定义（官方提供）
+#include "ds1302.h"//关于DS1302部分乱七八糟的定义
 
 typedef unsigned char u8;
 typedef unsigned int u16;
@@ -173,7 +173,7 @@ void Time0() interrupt 1
 	if(i==1000)//1s
 	{	
 		i = 0;//i清零
-		while(t_n==9)//10s--尝试破除时间误差
+		while(t_n==9)//10s--目前改进点：尝试减少定时误差
 		{
 			t = 100;//控制占空比
 			while(t--)//蜂鸣器响
@@ -187,7 +187,8 @@ void Time0() interrupt 1
 	}
 }
 
-/*void Usart() interrupt 4
+/*处于BUG状态中
+void Usart() interrupt 4
 {
 	u8 receiveData;
 	receiveData = SBUF;
